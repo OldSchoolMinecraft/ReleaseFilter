@@ -4,10 +4,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 import ru.tehkode.permissions.commands.Command;
+import ru.tehkode.permissions.commands.CommandListener;
 
 import java.util.Map;
 
-public class CommandHandler
+public class CommandHandler implements CommandListener
 {
     @Command(name = "rf", syntax = "allow <username>", description = "Allow a user to use release", permission = "rf.admin")
     public void onAllowCommand(final Plugin plugin, final CommandSender sender, final Map<String, String> args)
