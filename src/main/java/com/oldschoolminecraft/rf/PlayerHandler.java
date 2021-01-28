@@ -7,6 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.Bukkit;
 
 public class PlayerHandler extends PlayerListener
 {
@@ -42,6 +43,10 @@ public class PlayerHandler extends PlayerListener
 
     private void kick(Player player)
     {
-        player.kickPlayer(ChatColor.RED + "Please connect using Beta 1.7.3 instead.");
+        player.kickPlayer(ChatColor.RED + "Please connect using Beta 1.7.3.");
+        System.out.println(ChatColor.RED + player.getName() + " was kicked for using DirtMultiversion.");
+        for (Player ply : Bukkit.getServer().getOnlinePlayers())
+            if (ply.hasPermission("rf.notify"))
+                ply.sendMessage(ChatColor.RED + player.getName() + " was kicked for using DirtMultiversion.");
     }
 }
