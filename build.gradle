@@ -1,0 +1,32 @@
+plugins
+{
+    id 'java-library'
+}
+
+repositories
+{
+    jcenter()
+    mavenCentral()
+}
+
+configurations
+{
+    provided
+    compile.extendsFrom(provided)
+}
+
+dependencies
+{
+    provided group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.12.0'
+    provided group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.0'
+    provided group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.12.0'
+
+    compile files("libs/Project-Poseidon-1.1.5-DEV-3.jar")
+    compile files("libs/Spout.jar")
+    compile files("libs/PermissionsEx.jar")
+}
+
+jar
+{
+    from configurations.provided.asFileTree.files.collect { zipTree(it) }
+}
