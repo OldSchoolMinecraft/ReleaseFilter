@@ -1,21 +1,13 @@
 package com.oldschoolminecraft.rf;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.minecraft.server.Packet0KeepAlive;
-import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.getspout.spout.packet.standard.MCCraftPacket;
-import org.getspout.spoutapi.SpoutManager;
-import org.getspout.spoutapi.packet.SpoutPacket;
-import org.getspout.spoutapi.packet.listener.PacketListener;
-import org.getspout.spoutapi.packet.standard.MCPacket;
 import ru.tehkode.permissions.commands.CommandsManager;
 
 import java.io.File;
 import java.util.ArrayList;
 
-public class ReleaseFilter extends JavaPlugin implements PacketListener
+public class ReleaseFilter extends JavaPlugin
 {
     public static ReleaseFilter instance;
 
@@ -45,18 +37,7 @@ public class ReleaseFilter extends JavaPlugin implements PacketListener
             ex.printStackTrace();
         }
 
-        SpoutManager.getPacketManager().addListener(0, this);
-
         System.out.println("ReleaseFilter enabled.");
-    }
-
-    public boolean checkPacket(final Player player, final MCPacket packet)
-    {
-        Packet0KeepAlive packet0 = (Packet0KeepAlive) ((MCCraftPacket) packet).getPacket();
-        if (!player.hasPermission("rf.bypass"))
-            player.kickPlayer(ChatColor.RED + "Please connect on Beta 1.7.3");
-
-        return true;
     }
 
     public void onDisable()
