@@ -13,26 +13,35 @@ public class PlayerHandler extends PlayerListener
     @EventHandler
     public void onPlayerLogin(PlayerLoginEvent event)
     {
-        if (event.getPlayer().hasReceivedPacket0())
-            kick(event.getPlayer());
+        try
+        {
+            if (event.getPlayer().hasReceivedPacket0())
+                kick(event.getPlayer());
+        } catch (Exception ex) {}
     }
 
     @EventHandler
     public  void onPlayerJoin(PlayerJoinEvent event)
     {
-        if (event.getPlayer().hasReceivedPacket0())
-            kick(event.getPlayer());
+        try
+        {
+            if (event.getPlayer().hasReceivedPacket0())
+                kick(event.getPlayer());
+        } catch (Exception ex) {}
     }
 
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event)
     {
-        if (event.getPlayer().hasReceivedPacket0())
-            kick(event.getPlayer());
+        try
+        {
+            if (event.getPlayer().hasReceivedPacket0())
+                kick(event.getPlayer());
+        } catch (Exception ex) {}
     }
 
     private void kick(Player player)
     {
-        player.kickPlayer(ChatColor.RED + "Please use Beta 1.7.3");
+        player.kickPlayer(ChatColor.RED + "Please connect using Beta 1.7.3 instead.");
     }
 }

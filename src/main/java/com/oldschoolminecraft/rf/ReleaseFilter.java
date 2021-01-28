@@ -37,6 +37,8 @@ public class ReleaseFilter extends JavaPlugin
             ex.printStackTrace();
         }
 
+        getServer().getPluginManager().registerEvents(new PlayerHandler(), this);
+
         System.out.println("ReleaseFilter enabled.");
     }
 
